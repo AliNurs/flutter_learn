@@ -13,8 +13,6 @@ class MyApp extends StatelessWidget {
           appBar: AppBar(
             title: Text("My Second task"),
           ),
-
-          // Пока что без видео, без Media Query, поэтому с размером можеть быть доработки но в моем т-фоне работает
           body: Column(
             children: [
               Container(
@@ -73,7 +71,7 @@ class RepeatScrolList extends StatelessWidget {
           children: const [
             Icon(
               Icons.add,
-              size: 26,
+              size: 36,
             ),
             Text(
               "Add",
