@@ -8,48 +8,51 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text("My Second task"),
-        ),
+      home: Builder(builder: (context) {
+        return Scaffold(
+          appBar: AppBar(
+            title: Text("My Second task"),
+          ),
 
-        // Пока что без видео, без Media Query, поэтому с размером можеть быть доработки но в моем т-фоне работает
-        body: Column(
-          children: [
-            Container(
-              height: 610,
-              color: Colors.red,
-              child: const Center(
-                child: Text(
-                  "Image",
-                  style: TextStyle(fontFamily: 'boorsok', fontSize: 45),
+          // Пока что без видео, без Media Query, поэтому с размером можеть быть доработки но в моем т-фоне работает
+          body: Column(
+            children: [
+              Container(
+                height: MediaQuery.of(context).size.height * 0.7,
+                //        width: MediaQuery.of(context).size.width * 10,
+                color: Color.fromARGB(255, 247, 27, 23),
+//
+                child: const Padding(
+                  padding: EdgeInsets.symmetric(
+                    vertical: 120,
+                  ),
+//
+                  child: Align(
+                    alignment: Alignment.topCenter,
+                    child: Text(
+                      "Image",
+                      style: TextStyle(fontFamily: 'boorsok', fontSize: 45),
+                    ),
+                  ),
                 ),
               ),
-            ),
-            Container(
-              color: Colors.lightGreenAccent,
-              height: 126,
-              child: ListView(
-                scrollDirection: Axis.horizontal,
-                children: const [
-                  RepeatScrolList(),
-                  RepeatScrolList(),
-                  RepeatScrolList(),
-                  RepeatScrolList(),
-                  RepeatScrolList(),
-                  RepeatScrolList(),
-                  RepeatScrolList(),
-                  RepeatScrolList(),
-                  RepeatScrolList(),
-                  RepeatScrolList(),
-                ],
-              ),
-            )
-          ],
-        ),
-      ),
-
-      //  ),
+              Container(
+                height: MediaQuery.of(context).size.height * 0.2,
+                //   alignment: Alignment.bottomCenter,
+                color: Colors.lightGreenAccent.shade700,
+                child: ListView.builder(
+                  // shrinkWrap: true,
+                  itemCount: 10,
+                  scrollDirection: Axis.horizontal,
+                  itemBuilder: ((context, index) {
+                    return const RepeatScrolList();
+                  }),
+                ),
+              )
+            ],
+          ),
+        );
+      }),
     );
   }
 }
@@ -61,16 +64,16 @@ class RepeatScrolList extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: Container(
-        height: 90,
-        width: 130,
+        height: 110,
+        width: 150,
         margin: EdgeInsets.only(left: 10, right: 10),
         color: Colors.amber,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: const [
-            Text(
-              "+",
-              style: TextStyle(fontSize: 35),
+            Icon(
+              Icons.add,
+              size: 26,
             ),
             Text(
               "Add",
